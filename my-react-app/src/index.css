@@ -1,0 +1,225 @@
+/* * LƯU Ý QUAN TRỌNG: 
+ * Bỏ margin: 50px auto; khỏi selector * để tránh xung đột margin toàn cục.
+ * Nếu bạn muốn căn giữa, chỉ áp dụng cho container cụ thể.
+ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Thiết lập Layout chung */
+.inventory-layout {
+    display: flex; 
+    min-height: 100vh;
+    background-color: #f4f7f9; /* Màu nền nhẹ nhàng, chuyên nghiệp */
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+/* --- 1. Thanh Sidebar --- */
+.sidebar {
+    width: 260px; /* Tăng độ rộng Sidebar */
+    background: linear-gradient(to bottom, #34495e, #2c3e50); /* Gradient nhẹ */
+    color: white;
+    flex-shrink: 0; 
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1); /* Bóng mờ bên phải */
+    position: sticky; /* Giữ menu cố định khi cuộn */
+    top: 0;
+    height: 100vh;
+    padding: 10px 0;
+}
+
+.sidebar-title {
+    padding: 20px 15px;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 10px;
+}
+
+.sidebar-item {
+    padding: 12px 20px;
+    cursor: pointer;
+    border-left: 5px solid transparent;
+    transition: all 0.2s ease-in-out;
+}
+
+.sidebar-item:hover {
+    background-color: #2c3e50;
+    border-left-color: #3498db; /* Hiệu ứng hover nhẹ nhàng */
+}
+
+.sidebar-item.active {
+    background-color: #3498db; /* Màu xanh dương làm Active */
+    border-left-color: #2ecc71; 
+    font-weight: 600;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* --- 2. Khu vực Nội dung Chính --- */
+.main-content-wrapper {
+    flex-grow: 1; 
+    padding: 20px 30px; /* Tăng padding để có khoảng trống */
+    overflow-y: auto;
+}
+
+.main-header {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #3498db; /* Đường gạch nổi bật */
+}
+
+/* --- 3. Thanh tìm kiếm và Bộ lọc --- */
+.search-filter-bar {
+    display: flex;
+    gap: 20px;
+    align-items: flex-end; 
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px; /* Bo tròn góc */
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Bóng nổi 3D nhẹ */
+}
+
+.search-group {
+    display: flex; /* Dùng flex cho label và input */
+    flex-direction: column;
+}
+
+.search-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #7f8c8d; /* Màu chữ xám nhạt */
+    margin-bottom: 6px;
+}
+
+.search-group input, .search-group select {
+    padding: 8px 12px;
+    border: 1px solid #dcdfe6;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    min-width: 150px; /* Độ rộng tối thiểu cho Select/Input thường */
+}
+
+.search-group input:focus, .search-group select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none;
+}
+
+.search-group.content-search {
+    flex-grow: 1; 
+}
+.search-group.content-search input {
+    min-width: 250px;
+}
+
+.search-button {
+    background-color: #2ecc71; /* Màu xanh lá cây (Success) */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 4px #27ae60; /* Hiệu ứng nhấn nút 3D */
+}
+
+.search-button:hover {
+    background-color: #27ae60;
+}
+
+.search-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px #27ae60;
+}
+
+/* --- 4. Container Bảng và Phân Trang --- */
+.equipment-table-container {
+    border-radius: 8px; 
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Bóng mờ nhẹ cho bảng */
+}
+
+/* Header Phân Trang và Thông tin */
+.pagination-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ecf0f1;
+    border-bottom: 1px solid #dcdfe6;
+    font-size: 14px;
+    color: #555;
+}
+
+.pagination-controls button {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    margin: 0 4px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+    background-color: #f0f8ff;
+    border-color: #3498db;
+}
+
+.pagination-controls button:disabled {
+    background: #f7f7f7;
+    color: #bdc3c7;
+    cursor: not-allowed;
+    border-color: #eee;
+}
+
+/* Bảng */
+.equipment-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.equipment-table thead {
+    background-color: #3498db; /* Màu xanh dương đậm cho Header */
+    color: white;
+}
+
+.equipment-table th {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 700;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    white-space: nowrap; 
+}
+.equipment-table th:last-child {
+    border-right: none;
+}
+
+.equipment-table td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    color: #333;
+}
+
+.equipment-table tbody tr:hover {
+    background-color: #fefefe; /* Hiệu ứng hover rõ ràng hơn */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transform: scale(1.005);
+    transition: all 0.1s ease-in-out;
+}
+
+.equipment-table tbody tr:last-child td {
+    border-bottom: none;
+}
