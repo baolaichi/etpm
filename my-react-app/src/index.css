@@ -52,7 +52,7 @@
 
 .sidebar-item.active {
     background-color: #3498db; /* Màu xanh dương làm Active */
-    border-left-color: #2ecc71; 
+    border-left-color: #2e9fcc; 
     font-weight: 600;
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
 }
@@ -120,7 +120,7 @@
 }
 
 .search-button {
-    background-color: #2ecc71; /* Màu xanh lá cây (Success) */
+    background-color: #2771b6; /* Màu xanh lá cây (Success) */
     color: white;
     padding: 10px 20px;
     border: none;
@@ -128,16 +128,16 @@
     cursor: pointer;
     font-weight: 700;
     transition: background-color 0.2s, transform 0.1s;
-    box-shadow: 0 4px #27ae60; /* Hiệu ứng nhấn nút 3D */
+    box-shadow: 0 4px #4082ce; /* Hiệu ứng nhấn nút 3D */
 }
 
 .search-button:hover {
-    background-color: #27ae60;
+    background-color: #277cae;
 }
 
 .search-button:active {
     transform: translateY(2px);
-    box-shadow: 0 2px #27ae60;
+    box-shadow: 0 2px #2486b3;
 }
 
 /* --- 4. Container Bảng và Phân Trang --- */
@@ -222,4 +222,35 @@
 
 .equipment-table tbody tr:last-child td {
     border-bottom: none;
+}
+
+.btn-add {
+    background-color: #2980b9;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 4px #2471a3;
+}
+
+/* Sử dụng !important cho background để đảm bảo ghi đè lên Material UI */
+.add-equipment-button {
+    background-color: #2e65cc;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 20px 16px;   /* dãn trên dưới 20px, trái phải 16px */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-transform: none;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: none;         /* thêm để nút đẹp hơn */
+    cursor: pointer;      /* để hiển thị cursor */
+}
+
+.add-equipment-button:hover {
+    background-color: #27ae60;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }

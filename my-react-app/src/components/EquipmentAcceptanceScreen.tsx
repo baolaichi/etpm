@@ -6,6 +6,7 @@ import { fetchEquipmentData, type SearchParams } from '../api/equipmentApi'; // 
 import EquipmentTable from '../components/EquipmentTable';
 import SearchFilterBar from '../components/SearchFilterBar'; // <-- IMPORT COMPONENT TÌM KIẾM
 import { type EquipmentViewDTO, type PaginatedResponse } from '../types/equipment';
+import EquipmentAdd from './EquipmentAdd';
 
 // Định nghĩa kiểu dữ liệu cho bộ lọc (trích xuất từ SearchParams)
 interface Filters {
@@ -75,6 +76,8 @@ const EquipmentAcceptanceScreen: React.FC = () => {
         setFilters(newFilters);
     };
 
+
+
     return (
         <div className="acceptance-screen-container p-4">
             <h1>Quản lý Nghiệm thu Thiết bị</h1>
@@ -84,6 +87,11 @@ const EquipmentAcceptanceScreen: React.FC = () => {
                 currentFilters={filters}
                 onSearch={handleSearch}
             />
+
+            {/*NÚT BẤM THÊM DỮ LIỆU */}
+            <div className="main-header-controls"> 
+                <EquipmentAdd /> {/* <-- RENDER NÚT THÊM MỚI */}
+            </div>
             
             {/* TRUYỀN DỮ LIỆU ĐỂ HIỂN THỊ BẢNG */}
             <EquipmentTable
